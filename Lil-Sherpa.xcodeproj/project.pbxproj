@@ -1,0 +1,517 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7E3491FE1AEA526B008BDE93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3491FD1AEA526B008BDE93 /* AppDelegate.swift */; };
+		7E3492001AEA526B008BDE93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3491FF1AEA526B008BDE93 /* ViewController.swift */; };
+		7E3492031AEA526B008BDE93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3492011AEA526B008BDE93 /* Main.storyboard */; };
+		7E3492051AEA526B008BDE93 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E3492041AEA526B008BDE93 /* Images.xcassets */; };
+		7E3492081AEA526B008BDE93 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E3492061AEA526B008BDE93 /* LaunchScreen.xib */; };
+		7E3492141AEA526B008BDE93 /* Lil_SherpaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3492131AEA526B008BDE93 /* Lil_SherpaTests.swift */; };
+		7E34921E1AEA720C008BDE93 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E34921D1AEA720C008BDE93 /* LaunchViewController.swift */; };
+		7E3492201AEA7240008BDE93 /* SigninSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E34921F1AEA7240008BDE93 /* SigninSelectionViewController.swift */; };
+		7E3492221AEA7284008BDE93 /* EmailSigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3492211AEA7284008BDE93 /* EmailSigninViewController.swift */; };
+		7E3492241AEA7353008BDE93 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3492231AEA7353008BDE93 /* MenuViewController.swift */; };
+		7E3492261AEB1E92008BDE93 /* TableVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3492251AEB1E92008BDE93 /* TableVViewController.swift */; };
+		7E3492281AEB1F47008BDE93 /* RefineSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3492271AEB1F47008BDE93 /* RefineSearchViewController.swift */; };
+		7E34922A1AEB1F7C008BDE93 /* MySherpaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3492291AEB1F7C008BDE93 /* MySherpaViewController.swift */; };
+		FAB7AF9389E4A9196C5BDD35 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7316D42AA2C9736FA8D5DCE5 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7E34920E1AEA526B008BDE93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E3491F01AEA526B008BDE93 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E3491F71AEA526B008BDE93;
+			remoteInfo = "Lil-Sherpa";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3A2AD313306F13B52D07213D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7316D42AA2C9736FA8D5DCE5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E3491F81AEA526B008BDE93 /* Lil-Sherpa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lil-Sherpa.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E3491FC1AEA526B008BDE93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E3491FD1AEA526B008BDE93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7E3491FF1AEA526B008BDE93 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7E3492021AEA526B008BDE93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7E3492041AEA526B008BDE93 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7E3492071AEA526B008BDE93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		7E34920D1AEA526B008BDE93 /* Lil-SherpaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Lil-SherpaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E3492121AEA526B008BDE93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E3492131AEA526B008BDE93 /* Lil_SherpaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lil_SherpaTests.swift; sourceTree = "<group>"; };
+		7E34921D1AEA720C008BDE93 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		7E34921F1AEA7240008BDE93 /* SigninSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninSelectionViewController.swift; sourceTree = "<group>"; };
+		7E3492211AEA7284008BDE93 /* EmailSigninViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailSigninViewController.swift; sourceTree = "<group>"; };
+		7E3492231AEA7353008BDE93 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		7E3492251AEB1E92008BDE93 /* TableVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableVViewController.swift; sourceTree = "<group>"; };
+		7E3492271AEB1F47008BDE93 /* RefineSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefineSearchViewController.swift; sourceTree = "<group>"; };
+		7E3492291AEB1F7C008BDE93 /* MySherpaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySherpaViewController.swift; sourceTree = "<group>"; };
+		FE490A0C1399CB44762D0B05 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7E3491F51AEA526B008BDE93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAB7AF9389E4A9196C5BDD35 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E34920A1AEA526B008BDE93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E609AE269227E8448209EA2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FE490A0C1399CB44762D0B05 /* Pods.debug.xcconfig */,
+				3A2AD313306F13B52D07213D /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		561DDEA6D1E00727696A6FF0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7316D42AA2C9736FA8D5DCE5 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7E3491EF1AEA526B008BDE93 = {
+			isa = PBXGroup;
+			children = (
+				7E3491FA1AEA526B008BDE93 /* Lil-Sherpa */,
+				7E3492101AEA526B008BDE93 /* Lil-SherpaTests */,
+				7E3491F91AEA526B008BDE93 /* Products */,
+				0E609AE269227E8448209EA2 /* Pods */,
+				561DDEA6D1E00727696A6FF0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7E3491F91AEA526B008BDE93 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7E3491F81AEA526B008BDE93 /* Lil-Sherpa.app */,
+				7E34920D1AEA526B008BDE93 /* Lil-SherpaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7E3491FA1AEA526B008BDE93 /* Lil-Sherpa */ = {
+			isa = PBXGroup;
+			children = (
+				7E3491FD1AEA526B008BDE93 /* AppDelegate.swift */,
+				7E3491FF1AEA526B008BDE93 /* ViewController.swift */,
+				7E3492011AEA526B008BDE93 /* Main.storyboard */,
+				7E3492291AEB1F7C008BDE93 /* MySherpaViewController.swift */,
+				7E3492271AEB1F47008BDE93 /* RefineSearchViewController.swift */,
+				7E3492251AEB1E92008BDE93 /* TableVViewController.swift */,
+				7E3492231AEA7353008BDE93 /* MenuViewController.swift */,
+				7E3492211AEA7284008BDE93 /* EmailSigninViewController.swift */,
+				7E34921F1AEA7240008BDE93 /* SigninSelectionViewController.swift */,
+				7E34921D1AEA720C008BDE93 /* LaunchViewController.swift */,
+				7E3492041AEA526B008BDE93 /* Images.xcassets */,
+				7E3492061AEA526B008BDE93 /* LaunchScreen.xib */,
+				7E3491FB1AEA526B008BDE93 /* Supporting Files */,
+			);
+			path = "Lil-Sherpa";
+			sourceTree = "<group>";
+		};
+		7E3491FB1AEA526B008BDE93 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7E3491FC1AEA526B008BDE93 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7E3492101AEA526B008BDE93 /* Lil-SherpaTests */ = {
+			isa = PBXGroup;
+			children = (
+				7E3492131AEA526B008BDE93 /* Lil_SherpaTests.swift */,
+				7E3492111AEA526B008BDE93 /* Supporting Files */,
+			);
+			path = "Lil-SherpaTests";
+			sourceTree = "<group>";
+		};
+		7E3492111AEA526B008BDE93 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7E3492121AEA526B008BDE93 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7E3491F71AEA526B008BDE93 /* Lil-Sherpa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E3492171AEA526B008BDE93 /* Build configuration list for PBXNativeTarget "Lil-Sherpa" */;
+			buildPhases = (
+				C279B1C78DC01AD820222121 /* Check Pods Manifest.lock */,
+				7E3491F41AEA526B008BDE93 /* Sources */,
+				7E3491F51AEA526B008BDE93 /* Frameworks */,
+				7E3491F61AEA526B008BDE93 /* Resources */,
+				8249D887507A508FCFA3DC1E /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Lil-Sherpa";
+			productName = "Lil-Sherpa";
+			productReference = 7E3491F81AEA526B008BDE93 /* Lil-Sherpa.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7E34920C1AEA526B008BDE93 /* Lil-SherpaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7E34921A1AEA526B008BDE93 /* Build configuration list for PBXNativeTarget "Lil-SherpaTests" */;
+			buildPhases = (
+				7E3492091AEA526B008BDE93 /* Sources */,
+				7E34920A1AEA526B008BDE93 /* Frameworks */,
+				7E34920B1AEA526B008BDE93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7E34920F1AEA526B008BDE93 /* PBXTargetDependency */,
+			);
+			name = "Lil-SherpaTests";
+			productName = "Lil-SherpaTests";
+			productReference = 7E34920D1AEA526B008BDE93 /* Lil-SherpaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7E3491F01AEA526B008BDE93 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Christine Moy";
+				TargetAttributes = {
+					7E3491F71AEA526B008BDE93 = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					7E34920C1AEA526B008BDE93 = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = 7E3491F71AEA526B008BDE93;
+					};
+				};
+			};
+			buildConfigurationList = 7E3491F31AEA526B008BDE93 /* Build configuration list for PBXProject "Lil-Sherpa" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7E3491EF1AEA526B008BDE93;
+			productRefGroup = 7E3491F91AEA526B008BDE93 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7E3491F71AEA526B008BDE93 /* Lil-Sherpa */,
+				7E34920C1AEA526B008BDE93 /* Lil-SherpaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7E3491F61AEA526B008BDE93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E3492031AEA526B008BDE93 /* Main.storyboard in Resources */,
+				7E3492081AEA526B008BDE93 /* LaunchScreen.xib in Resources */,
+				7E3492051AEA526B008BDE93 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E34920B1AEA526B008BDE93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8249D887507A508FCFA3DC1E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C279B1C78DC01AD820222121 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7E3491F41AEA526B008BDE93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E3492001AEA526B008BDE93 /* ViewController.swift in Sources */,
+				7E3492241AEA7353008BDE93 /* MenuViewController.swift in Sources */,
+				7E34921E1AEA720C008BDE93 /* LaunchViewController.swift in Sources */,
+				7E3492221AEA7284008BDE93 /* EmailSigninViewController.swift in Sources */,
+				7E34922A1AEB1F7C008BDE93 /* MySherpaViewController.swift in Sources */,
+				7E3492261AEB1E92008BDE93 /* TableVViewController.swift in Sources */,
+				7E3491FE1AEA526B008BDE93 /* AppDelegate.swift in Sources */,
+				7E3492281AEB1F47008BDE93 /* RefineSearchViewController.swift in Sources */,
+				7E3492201AEA7240008BDE93 /* SigninSelectionViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7E3492091AEA526B008BDE93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7E3492141AEA526B008BDE93 /* Lil_SherpaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7E34920F1AEA526B008BDE93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7E3491F71AEA526B008BDE93 /* Lil-Sherpa */;
+			targetProxy = 7E34920E1AEA526B008BDE93 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7E3492011AEA526B008BDE93 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E3492021AEA526B008BDE93 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7E3492061AEA526B008BDE93 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E3492071AEA526B008BDE93 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7E3492151AEA526B008BDE93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7E3492161AEA526B008BDE93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7E3492181AEA526B008BDE93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE490A0C1399CB44762D0B05 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Lil-Sherpa/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7E3492191AEA526B008BDE93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A2AD313306F13B52D07213D /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Lil-Sherpa/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7E34921B1AEA526B008BDE93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Lil-SherpaTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lil-Sherpa.app/Lil-Sherpa";
+			};
+			name = Debug;
+		};
+		7E34921C1AEA526B008BDE93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Lil-SherpaTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Lil-Sherpa.app/Lil-Sherpa";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7E3491F31AEA526B008BDE93 /* Build configuration list for PBXProject "Lil-Sherpa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E3492151AEA526B008BDE93 /* Debug */,
+				7E3492161AEA526B008BDE93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7E3492171AEA526B008BDE93 /* Build configuration list for PBXNativeTarget "Lil-Sherpa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E3492181AEA526B008BDE93 /* Debug */,
+				7E3492191AEA526B008BDE93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7E34921A1AEA526B008BDE93 /* Build configuration list for PBXNativeTarget "Lil-SherpaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E34921B1AEA526B008BDE93 /* Debug */,
+				7E34921C1AEA526B008BDE93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7E3491F01AEA526B008BDE93 /* Project object */;
+}
