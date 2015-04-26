@@ -23,16 +23,16 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     }
     
     func loadActivities(name: String? = nil, sortAsc: Bool? = nil) {
-        var query = PFQuery(className:"Activity_Provider")
+        var query = PFQuery(className:"ActivityProvider")
         if let name = name {
-            query.whereKey("name", equalTo:name)
+            query.whereKey("apName", equalTo:name)
         }
         
         if let sortAsc = sortAsc {
             if sortAsc {
-                query.orderByAscending("name")
+                query.orderByAscending("apName")
             } else {
-                query.orderByDescending("name")
+                query.orderByDescending("apName")
             }
         }
         
@@ -84,10 +84,17 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("activityCell") as! UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("activityCell") as! activityCell
         
         let activity = activities[indexPath.row]
-        cell.textLabel!.text = activity["name"] as? String
+        
+        cell.activityStartTimeLabel.text = activity["apName"] as? String
+        cell.activityDurationLabel.text = activity["apName"] as? String
+        cell.activityNameLabel.text = activity["apName"] as? String
+        cell.activityLocationLabel.text = activity["apName"] as? String
+        cell.activityTeacherLabel.text = activity["apName"] as? String
+        cell.activityNeighborhoodLabel.text = activity["apName"] as? String
+        
         
         return cell
     }
