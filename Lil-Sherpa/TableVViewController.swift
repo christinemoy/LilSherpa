@@ -30,14 +30,14 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         if let name = name {
             query.whereKey("testOutput", equalTo:name)
         }
-        
-        if let sortAsc = sortAsc {
-            if sortAsc {
-                query.orderByAscending("testOutput")
-            } else {
-                query.orderByDescending("testOutput")
-            }
-        }
+    
+//        if let sortAsc = sortAsc {
+//            if sortAsc {
+//                query.orderByAscending("testOutput")
+//            } else {
+//                query.orderByDescending("testOutput")
+//            }
+//        }
         
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
@@ -95,7 +95,12 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
         let activity = activities[indexPath.row]
         
-        cell.activityStartTimeLabel.text = activity["testOutput"] as? String
+        let date = activity["sDate"] as? NSDate
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        var dateString = dateFormatter.stringFromDate(date!)
+        
+        cell.activityStartTimeLabel.text = dateString
         cell.activityDurationLabel.text = activity["testOutput"] as? String
         cell.activityNameLabel.text = activity["testOutput"] as? String
         cell.activityLocationLabel.text = activity["testOutput"] as? String
