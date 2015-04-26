@@ -23,13 +23,13 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     func loadActivities(name: String? = nil, sortAsc: Bool? = nil) {
         var query = PFQuery(className:"Schedule")
+        query.includeKey("sActivityName")
+        query.includeKey("sActivityProvider")
+        query.includeKey("sTeacher")
         
-//        query.orderByDescending("sDate")
-//        query.includeKey("sActivityName")
-        
-        if let name = name {
-            query.whereKey("testOutput", equalTo:name)
-        }
+//        if let name = name {
+//            query.whereKey("testOutput", equalTo:name)
+//        }
     
 //        if let sortAsc = sortAsc {
 //            if sortAsc {
@@ -43,7 +43,15 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
             (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let objects = objects as? [PFObject] {
-                    self.activities = objects
+
+                    
+                    for object in objects {
+                        var activityDetail = object["sActivityName"] as? PFObject
+                        self.activities = objects
+                        println("\(objects)")
+                        println("\(activityDetail)")
+                    }
+                    
                 }
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
@@ -97,15 +105,31 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
         let date = activity["sDate"] as? NSDate
         var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+        dateFormatter.dateFormat = "h:mm a"
+//        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
         var dateString = dateFormatter.stringFromDate(date!)
         
         cell.activityStartTimeLabel.text = dateString
-        cell.activityDurationLabel.text = activity["testOutput"] as? String
-        cell.activityNameLabel.text = activity["testOutput"] as? String
-        cell.activityLocationLabel.text = activity["testOutput"] as? String
-        cell.activityTeacherLabel.text = activity["testOutput"] as? String
-        cell.activityNeighborhoodLabel.text = activity["testOutput"] as? String
+        
+        if let actDetPointer = activity["sActivityName"] as? PFObject {
+            if let dur = actDetPointer["aDuration"] as? String {
+                cell.activityDurationLabel.text = ("\(dur) min")
+                cell.activityNameLabel.text = actDetPointer["aName"] as? String
+            }
+        }
+        
+        if let actProvPointer = activity["sActivityProvider"] as? PFObject {
+            cell.activityLocationLabel.text = actProvPointer["apName"] as? String
+            cell.activityNeighborhoodLabel.text = actProvPointer["apNeighborhoodL2"] as? String
+        }
+        
+        if let actTeacherPointer = activity["sTeacher"] as? PFObject {
+            if let tchrfn = actTeacherPointer["tFirstName"] as? String {
+                if let tchrln = actTeacherPointer["tLastName"] as? String {
+                    cell.activityTeacherLabel.text = ("\(tchrfn) \(tchrln)")
+                }
+            }
+        }
         
         
         return cell
