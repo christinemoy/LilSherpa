@@ -1,14 +1,33 @@
 import Parse
 import UIKit
 
-class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource {
+class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
+    
+    let userCalendar = NSCalendar.currentCalendar()
+    let timeZone = NSTimeZone(abbreviation: "GMT")
+    userCalendar.timeZone = timeZone!
     
     var activities = [PFObject]()
     
     var refreshControl : UIRefreshControl?
     
+    let actdetSegueIdentifier = "showActivityDetailSegue"
+    
     @IBOutlet weak var tableView: UITableView!
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == actdetSegueIdentifier {
+            
+            if let destination = segue.destinationViewController as? ActivityDetailViewController {
+                
+                if let activityIndex = self.tableView.indexPathForSelectedRow()?.row {
+                    
+                    destination.activity = (activities[activityIndex].valueForKey("testOutput") as? String)!
+                }
+            }
+        }
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

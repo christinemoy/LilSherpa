@@ -21,6 +21,7 @@
 		7E3492281AEB1F47008BDE93 /* RefineSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3492271AEB1F47008BDE93 /* RefineSearchViewController.swift */; };
 		7E34922A1AEB1F7C008BDE93 /* MySherpaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3492291AEB1F7C008BDE93 /* MySherpaViewController.swift */; };
 		7E34922C1AEBD302008BDE93 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E34922B1AEBD302008BDE93 /* ActivityCell.swift */; };
+		7E3492301AED76EF008BDE93 /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E34922F1AED76EF008BDE93 /* ActivityDetailViewController.swift */; };
 		FAB7AF9389E4A9196C5BDD35 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7316D42AA2C9736FA8D5DCE5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		7E3492271AEB1F47008BDE93 /* RefineSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefineSearchViewController.swift; sourceTree = "<group>"; };
 		7E3492291AEB1F7C008BDE93 /* MySherpaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySherpaViewController.swift; sourceTree = "<group>"; };
 		7E34922B1AEBD302008BDE93 /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityCell.swift; path = ../ActivityCell.swift; sourceTree = "<group>"; };
+		7E34922F1AED76EF008BDE93 /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		FE490A0C1399CB44762D0B05 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,7 @@
 		7E3491FA1AEA526B008BDE93 /* Lil-Sherpa */ = {
 			isa = PBXGroup;
 			children = (
+				7E34922F1AED76EF008BDE93 /* ActivityDetailViewController.swift */,
 				7E34922B1AEBD302008BDE93 /* ActivityCell.swift */,
 				7E3491FD1AEA526B008BDE93 /* AppDelegate.swift */,
 				7E3491FF1AEA526B008BDE93 /* ViewController.swift */,
@@ -295,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E3492301AED76EF008BDE93 /* ActivityDetailViewController.swift in Sources */,
 				7E3492001AEA526B008BDE93 /* ViewController.swift in Sources */,
 				7E3492241AEA7353008BDE93 /* MenuViewController.swift in Sources */,
 				7E34922C1AEBD302008BDE93 /* ActivityCell.swift in Sources */,
