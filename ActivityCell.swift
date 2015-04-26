@@ -1,6 +1,6 @@
 import UIKit
 
-class activityCell: UITableViewCell {
+class ActivityCell: UITableViewCell {
     
     @IBOutlet weak var activityStartTimeLabel: UILabel!
     

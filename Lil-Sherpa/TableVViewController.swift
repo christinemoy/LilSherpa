@@ -2,14 +2,12 @@ import Parse
 import UIKit
 
 class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource {
+    
     var activities = [PFObject]()
+    
     var refreshControl : UIRefreshControl?
     
     @IBOutlet weak var tableView: UITableView!
-    
-
-    
-    
     
     
     override func viewDidLoad() {
@@ -22,17 +20,22 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
     }
     
+    
     func loadActivities(name: String? = nil, sortAsc: Bool? = nil) {
-        var query = PFQuery(className:"ActivityProvider")
+        var query = PFQuery(className:"Schedule")
+        
+//        query.orderByDescending("sDate")
+//        query.includeKey("sActivityName")
+        
         if let name = name {
-            query.whereKey("apName", equalTo:name)
+            query.whereKey("testOutput", equalTo:name)
         }
         
         if let sortAsc = sortAsc {
             if sortAsc {
-                query.orderByAscending("apName")
+                query.orderByAscending("testOutput")
             } else {
-                query.orderByDescending("apName")
+                query.orderByDescending("testOutput")
             }
         }
         
@@ -50,13 +53,16 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         }
     }
     
+    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         loadActivities(name: searchBar.text)
     }
     
+    
     func sortActivities(asc: Bool){
         loadActivities(sortAsc: asc)
     }
+    
     
     @IBAction func sortOptions(sender: AnyObject) {
 //        var sortOptions = UIAlertController(title: "Sort", message: "Select sort options", preferredStyle: UIAlertControllerStyle.ActionSheet)
@@ -83,17 +89,18 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         loadActivities()
     }
     
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("activityCell") as! activityCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("activityCell") as! ActivityCell
         
         let activity = activities[indexPath.row]
         
-        cell.activityStartTimeLabel.text = activity["apName"] as? String
-        cell.activityDurationLabel.text = activity["apName"] as? String
-        cell.activityNameLabel.text = activity["apName"] as? String
-        cell.activityLocationLabel.text = activity["apName"] as? String
-        cell.activityTeacherLabel.text = activity["apName"] as? String
-        cell.activityNeighborhoodLabel.text = activity["apName"] as? String
+        cell.activityStartTimeLabel.text = activity["testOutput"] as? String
+        cell.activityDurationLabel.text = activity["testOutput"] as? String
+        cell.activityNameLabel.text = activity["testOutput"] as? String
+        cell.activityLocationLabel.text = activity["testOutput"] as? String
+        cell.activityTeacherLabel.text = activity["testOutput"] as? String
+        cell.activityNeighborhoodLabel.text = activity["testOutput"] as? String
         
         
         return cell
