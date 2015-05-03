@@ -155,26 +155,64 @@ class ActivityDetailViewController: UIViewController {
                 
                 //ACTIVITY CLASS NAME
                 
-                if let actProvPointer = actvy!.objectForKey("sActivityProvider") as? PFObject {
-                    if let aN = actProvPointer.objectForKey("apName") as? String {
-                        classNameLabel.text = "hello \(aN)"
+                if let actPointer = actvy!.objectForKey("sActivityName") as? PFObject {
+                    if let a = actPointer.objectForKey("aName") as? String {
+                        classNameLabel.text = a
+                    }
+                }
+                
+                //ACTIVITY PROVIDER & LOCATION NAME
+                if let actPointer = actvy!.objectForKey("sActivityProvider") as? PFObject {
+                    if let a = actPointer.objectForKey("apName") as? String {
+                        classLocationLabel.text = a
                     }
                 }
                 
                 //ACTIVITY TEACHER NAME
                 
+                if let actPointer = actvy!.objectForKey("sTeacher") as? PFObject {
+                    if let a = actPointer.objectForKey("tFirstName") as? String {
+                        if let b = actPointer.objectForKey("tLastName") as? String {
+                            classTeacherLabel.text = "\(a) \(b)"
+                        }
+                    }
+                }
+                
                 //ACTIVITY DATE
+                
+                if let a = actvy!.objectForKey("sDate") as? NSDate {
+                    var dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "EEEE, MMMM d"
+                    classDateLabel.text = dateFormatter.stringFromDate(a)
+                    }
+
                 
                 //ACTIVITY START AND END TIME (IN LOCAL TIME)
                 
-                
-                //ACTIVITY PROVIDER & LOCATION NAME
-                if let actProvPointer = actvy!.objectForKey("sActivityProvider") as? PFObject {
-                    if let aN = actProvPointer.objectForKey("apName") as? String {
-                        classNameLabel.text = "hello \(aN)"
-//                        var activityName = actProvPointer.objectForKey("apName") as? String WHY DOESN'T THIS WORK?
+                if let a = actvy!.objectForKey("sActivityName") as? PFObject {
+
+                    if let date = actvy?.objectForKey("sDate") as? NSDate {
+                        
+                        if let duration = a.objectForKey("aDuration") as? String {
+                    
+                            var dateFormatter = NSDateFormatter()
+                            dateFormatter.dateFormat = "h:mm a"
+                            let timeZone = NSTimeZone(name: "EDT")
+                            dateFormatter.timeZone = timeZone
+                            var durationInt = duration.toInt()
+                            var timeIntervalToAdd = NSTimeInterval(durationInt! * 60)
+                            var endTime = date.dateByAddingTimeInterval(timeIntervalToAdd)
+                            var endTimeString = dateFormatter.stringFromDate(endTime)
+                            println(endTimeString)
+                            var startTimeString = dateFormatter.stringFromDate(date)
+                            println(startTimeString)
+                            classTimeLabel.text = "\(startTimeString) - \(endTimeString)"
+                            
+                        }
                     }
                 }
+                
+
                 
                 //ACTIVITY CLASS CATEGORY
                 
