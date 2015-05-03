@@ -1,5 +1,6 @@
 import Parse
 import UIKit
+import Foundation
 
 class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     
@@ -18,7 +19,7 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                 
                 if let activityIndex = self.tableView.indexPathForSelectedRow()?.row {
                     
-                    destination.activity = (activities[activityIndex].valueForKey("objectId") as? String)!
+                    destination.activityId = (activities[activityIndex].valueForKey("objectId") as? String)!
                 }
             }
         }
@@ -63,8 +64,8 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                     for object in objects {
                         var activityDetail = object["sActivityName"] as? PFObject
                         self.activities = objects
-                        println("\(objects)")
-                        println("\(activityDetail)")
+//                        println("\(objects)")
+//                        println("\(activityDetail)")
                     }
                     
                 }
@@ -121,6 +122,10 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         let date = activity["sDate"] as? NSDate
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "h:mm a"
+        let timeZone = NSTimeZone(name: "EDT")
+        dateFormatter.timeZone = timeZone
+        //need to figure out how to adjust when EDT converts to EST
+        
 //        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
         var dateString = dateFormatter.stringFromDate(date!)
         

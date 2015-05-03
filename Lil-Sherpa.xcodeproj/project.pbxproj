@@ -22,6 +22,7 @@
 		7E34922A1AEB1F7C008BDE93 /* MySherpaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3492291AEB1F7C008BDE93 /* MySherpaViewController.swift */; };
 		7E34922C1AEBD302008BDE93 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E34922B1AEBD302008BDE93 /* ActivityCell.swift */; };
 		7E3492301AED76EF008BDE93 /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E34922F1AED76EF008BDE93 /* ActivityDetailViewController.swift */; };
+		7EBF08501AF0586800170543 /* babyyoga.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EBF084F1AF0586800170543 /* babyyoga.jpg */; };
 		FAB7AF9389E4A9196C5BDD35 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7316D42AA2C9736FA8D5DCE5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		7E3492291AEB1F7C008BDE93 /* MySherpaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySherpaViewController.swift; sourceTree = "<group>"; };
 		7E34922B1AEBD302008BDE93 /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityCell.swift; path = ../ActivityCell.swift; sourceTree = "<group>"; };
 		7E34922F1AED76EF008BDE93 /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
+		7EBF084F1AF0586800170543 /* babyyoga.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = babyyoga.jpg; sourceTree = "<group>"; };
 		FE490A0C1399CB44762D0B05 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 				7E34922F1AED76EF008BDE93 /* ActivityDetailViewController.swift */,
 				7E34922B1AEBD302008BDE93 /* ActivityCell.swift */,
 				7E3491FD1AEA526B008BDE93 /* AppDelegate.swift */,
+				7EBF084F1AF0586800170543 /* babyyoga.jpg */,
 				7E3491FF1AEA526B008BDE93 /* ViewController.swift */,
 				7E3492011AEA526B008BDE93 /* Main.storyboard */,
 				7E3492291AEB1F7C008BDE93 /* MySherpaViewController.swift */,
@@ -246,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E3492031AEA526B008BDE93 /* Main.storyboard in Resources */,
+				7EBF08501AF0586800170543 /* babyyoga.jpg in Resources */,
 				7E3492081AEA526B008BDE93 /* LaunchScreen.xib in Resources */,
 				7E3492051AEA526B008BDE93 /* Images.xcassets in Resources */,
 			);
