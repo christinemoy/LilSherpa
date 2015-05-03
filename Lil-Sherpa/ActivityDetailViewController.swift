@@ -12,15 +12,15 @@ class ActivityDetailViewController: UIViewController {
 
     var activityId = String()
     
-    var activityName = String()
+//    var activityName = String() WHY DOESN'T THIS WORK?
 
     @IBOutlet weak var activityNameLabel: UILabel!
 
-    override func viewWillAppear(animated: Bool) {
-        activityNameLabel.text = activityId
-        println(activityId)
-
-    }
+//    override func viewWillAppear(animated: Bool) {
+//        activityNameLabel.text = activityId
+//        println(activityId)
+//
+//    } DONT NEED THIS ANYMORE
     
 
     
@@ -84,6 +84,7 @@ class ActivityDetailViewController: UIViewController {
         let actPic = UIImage(named: imageName)
         let actPicView = UIImageView(image: actPic)
         actPicView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        //NEED TO CONVERT THIS PICTURE TO A PICTURE ON PARSE
         
         // add imageView to scroller
         scroller.addSubview(actPicView)
@@ -105,15 +106,42 @@ class ActivityDetailViewController: UIViewController {
         
         // add class detail text overlay on imageView
         
-        let classDetailLabel = UILabel()
-//        var activityName = actvy!.objectForKey("testOutput") as! String
-//        classDetailLabel.text = "hello \(activityName)"
-        classDetailLabel.backgroundColor = UIColor.redColor()
-        actPicView.addSubview(classDetailLabel)
-        classDetailLabel.frame = CGRect(x: self.view.frame.width/2, y: actPicView.frame.height/2, width: 150, height: 30)
-        classDetailLabel.center = CGPointMake(self.view.frame.width/2, actPicView.frame.height/2)
-        classDetailLabel.textAlignment = NSTextAlignment.Center
+        let classNameLabel = UILabel()
+        classNameLabel.backgroundColor = UIColor.redColor()
+        actPicView.addSubview(classNameLabel)
+        classNameLabel.frame = CGRect(x: self.view.frame.width/2, y: actPicView.frame.height/3, width: 150, height: 30)
+        classNameLabel.center = CGPointMake(self.view.frame.width/2, actPicView.frame.height/3)
+        classNameLabel.textAlignment = NSTextAlignment.Center
+        
+        let classLocationLabel = UILabel()
+        classLocationLabel.backgroundColor = UIColor.redColor()
+        actPicView.addSubview(classLocationLabel)
+        classLocationLabel.frame = CGRect(x: self.view.frame.width/2, y: actPicView.frame.height/2, width: 150, height: 30)
+        classLocationLabel.center = CGPointMake(self.view.frame.width/2, actPicView.frame.height/2)
+        classLocationLabel.textAlignment = NSTextAlignment.Center
+        
+        let classTeacherLabel = UILabel()
+        classTeacherLabel.backgroundColor = UIColor.redColor()
+        actPicView.addSubview(classTeacherLabel)
+        classTeacherLabel.frame = CGRect(x: self.view.frame.width/2, y: (actPicView.frame.height/3)*2, width: 150, height: 30)
+        classTeacherLabel.center = CGPointMake(self.view.frame.width/2, (actPicView.frame.height/3)*2)
+        classTeacherLabel.textAlignment = NSTextAlignment.Center
 
+        let classDateLabel = UILabel()
+        classDateLabel.backgroundColor = UIColor.redColor()
+        actPicView.addSubview(classDateLabel)
+        classDateLabel.frame = CGRect(x: self.view.frame.width/2, y: (actPicView.frame.height/3)*2.2, width: 150, height: 30)
+        classDateLabel.center = CGPointMake(self.view.frame.width/2, (actPicView.frame.height/3)*2.2)
+        classDateLabel.textAlignment = NSTextAlignment.Center
+        
+        let classTimeLabel = UILabel()
+        classTimeLabel.backgroundColor = UIColor.redColor()
+        actPicView.addSubview(classTimeLabel)
+        classTimeLabel.frame = CGRect(x: self.view.frame.width/2, y: (actPicView.frame.height/3)*2.4, width: 150, height: 30)
+        classTimeLabel.center = CGPointMake(self.view.frame.width/2, (actPicView.frame.height/3)*2.4)
+        classTimeLabel.textAlignment = NSTextAlignment.Center
+        
+        
         // pull PFObject detail
         var query = PFQuery(className:"Schedule")
         query.includeKey("sActivityName")
@@ -125,19 +153,48 @@ class ActivityDetailViewController: UIViewController {
                 println(actvy)
                 var test: String = (actvy!.objectForKey("testOutput") as? String)!
                 
+                //ACTIVITY CLASS NAME
+                
                 if let actProvPointer = actvy!.objectForKey("sActivityProvider") as? PFObject {
                     if let aN = actProvPointer.objectForKey("apName") as? String {
-                        classDetailLabel.text = aN
+                        classNameLabel.text = "hello \(aN)"
                     }
                 }
-
-
-//                classDetailLabel.text = "hello \(test)"
+                
+                //ACTIVITY TEACHER NAME
+                
+                //ACTIVITY DATE
+                
+                //ACTIVITY START AND END TIME (IN LOCAL TIME)
+                
+                
+                //ACTIVITY PROVIDER & LOCATION NAME
+                if let actProvPointer = actvy!.objectForKey("sActivityProvider") as? PFObject {
+                    if let aN = actProvPointer.objectForKey("apName") as? String {
+                        classNameLabel.text = "hello \(aN)"
+//                        var activityName = actProvPointer.objectForKey("apName") as? String WHY DOESN'T THIS WORK?
+                    }
+                }
+                
+                //ACTIVITY CLASS CATEGORY
+                
+                //ACTIVITY CLASS ABOUT
+                
+                //ACTIIVITY PROVIDER ADDRESS
+                
+                //ACTIVITY PROVIDER ABOUT
+                
+                
+                
+                
+                
                 
             } else {
                 println(error)
             }
         }
+        
+//        classDetailLabel.text = activityName WHY DOESN'T THIS WORK?
         
         // add button
         let button   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
