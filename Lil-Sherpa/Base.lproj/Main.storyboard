@@ -495,6 +495,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="pressMiddleButton:" destination="3sh-Yg-SOJ" eventType="touchUpInside" id="dLC-4m-O39"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9T-FW-obT">
                                 <rect key="frame" x="390" y="64" width="163" height="28"/>
@@ -504,6 +507,9 @@
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="pressRightButton:" destination="3sh-Yg-SOJ" eventType="touchUpInside" id="yfY-QB-3y6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmQ-dF-1Wm">
                                 <rect key="frame" x="60" y="64" width="163" height="28"/>
@@ -513,6 +519,9 @@
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="pressLeftButton:" destination="3sh-Yg-SOJ" eventType="touchUpInside" id="LOY-Tk-zDK"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="104" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fBv-Pj-C94">
                                 <rect key="frame" x="16" y="94" width="568" height="506"/>
@@ -646,6 +655,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="leftButton" destination="fmQ-dF-1Wm" id="MGH-ap-Crq"/>
+                        <outlet property="middleButton" destination="wDP-KY-C2K" id="30v-sJ-QD7"/>
+                        <outlet property="rightButton" destination="q9T-FW-obT" id="XA4-ZI-hiN"/>
                         <outlet property="tableView" destination="fBv-Pj-C94" id="OBh-xg-X2a"/>
                     </connections>
                 </viewController>

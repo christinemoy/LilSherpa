@@ -8,9 +8,57 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     var refreshControl : UIRefreshControl?
     
+    var todaysDate = NSDate()
+    
+
+
+    
+    
     let actdetSegueIdentifier = "showActivityDetailSegue"
     
+    @IBOutlet weak var middleButton: UIButton!
+    
+    @IBOutlet weak var rightButton: UIButton!
+    
+    @IBOutlet weak var leftButton: UIButton!
+    
+    
+    @IBAction func pressMiddleButton(sender: UIButton) {
+        println("primary")
+    }
+    
+    
+    @IBAction func pressRightButton(sender: UIButton) {
+        println("increment by one day")
+    }
+    
+    @IBAction func pressLeftButton(sender: UIButton) {
+        println("decrement by one day")
+    }
+    
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    func programmaticButtonUpdate(){
+        
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "EEEE, MMMM d"
+        let timeZone = NSTimeZone(name: "EDT")
+        dateFormatter.timeZone = timeZone
+        var middleDate = dateFormatter.stringFromDate(todaysDate)
+        
+        var rightDateNs = todaysDate.dateByAddingTimeInterval(60*60*24)
+        
+        var rightDate = dateFormatter.stringFromDate(rightDateNs)
+        
+        var leftDateNs = todaysDate.dateByAddingTimeInterval(-(60*60*24))
+        
+        var leftDate = dateFormatter.stringFromDate(leftDateNs)
+        
+        middleButton.setTitle(middleDate, forState: UIControlState.Normal)
+        rightButton.setTitle(rightDate, forState: UIControlState.Normal)
+        leftButton.setTitle(leftDate, forState: UIControlState.Normal)
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == actdetSegueIdentifier {
@@ -33,6 +81,9 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         refreshControl?.addTarget(self, action: "loadActivities", forControlEvents: UIControlEvents.ValueChanged)
         
         self.tableView.addSubview(refreshControl!)
+        
+        programmaticButtonUpdate()
+        
         
     }
     
