@@ -30,7 +30,7 @@ class ActivityDetailViewController: UIViewController {
         // set up scroller size and color
         let scroller = UIScrollView()
         scroller.contentSize = CGSize(width: self.view.frame.width, height: 1050)
-        scroller.backgroundColor = UIColor.purpleColor()
+        scroller.backgroundColor = UIColor.whiteColor()
         scroller.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         //add scroller to self subview
@@ -80,11 +80,13 @@ class ActivityDetailViewController: UIViewController {
         self.view.addConstraints([scrollTop, scrollLeading, scrollTrailing, scrollBottom])
         
         // add image
-        let imageName = "babyyoga.jpg"
+        let imageName = "kidville.jpg"
         let actPic = UIImage(named: imageName)
         let actPicView = UIImageView(image: actPic)
+        actPicView.frame = CGRect(x: 0, y: 0, width: 397, height: 397)
+        actPicView.contentMode = UIViewContentMode.ScaleAspectFit
         actPicView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        //NEED TO CONVERT THIS PICTURE TO A PICTURE ON PARSE
+        //NEED TO CONVERT THIS PICTURE TO A PICTURE ON PARSE; NEED TO FIGURE OUT HOW TO INPUT PICTURES OF DIFFERENT SIZES HERE
         
         // add imageView to scroller
         scroller.addSubview(actPicView)
@@ -107,39 +109,44 @@ class ActivityDetailViewController: UIViewController {
         // add class detail text overlay on imageView
         
         let classNameLabel = UILabel()
-        classNameLabel.backgroundColor = UIColor.redColor()
         actPicView.addSubview(classNameLabel)
-        classNameLabel.frame = CGRect(x: self.view.frame.width/2, y: actPicView.frame.height/3, width: 150, height: 30)
+        classNameLabel.frame = CGRect(x: self.view.frame.width/2, y: actPicView.frame.height/3, width: self.view.frame.width*0.8, height: 30)
         classNameLabel.center = CGPointMake(self.view.frame.width/2, actPicView.frame.height/3)
         classNameLabel.textAlignment = NSTextAlignment.Center
+        classNameLabel.font = UIFont.boldSystemFontOfSize(25)
+        classNameLabel.textColor = UIColor.whiteColor()
         
         let classLocationLabel = UILabel()
-        classLocationLabel.backgroundColor = UIColor.redColor()
         actPicView.addSubview(classLocationLabel)
         classLocationLabel.frame = CGRect(x: self.view.frame.width/2, y: actPicView.frame.height/2, width: 150, height: 30)
         classLocationLabel.center = CGPointMake(self.view.frame.width/2, actPicView.frame.height/2)
         classLocationLabel.textAlignment = NSTextAlignment.Center
+        classLocationLabel.font = UIFont.boldSystemFontOfSize(20)
+        classLocationLabel.textColor = UIColor.whiteColor()
         
         let classTeacherLabel = UILabel()
-        classTeacherLabel.backgroundColor = UIColor.redColor()
         actPicView.addSubview(classTeacherLabel)
         classTeacherLabel.frame = CGRect(x: self.view.frame.width/2, y: (actPicView.frame.height/3)*2, width: 150, height: 30)
         classTeacherLabel.center = CGPointMake(self.view.frame.width/2, (actPicView.frame.height/3)*2)
         classTeacherLabel.textAlignment = NSTextAlignment.Center
+        classTeacherLabel.font = UIFont.boldSystemFontOfSize(15)
+        classTeacherLabel.textColor = UIColor.whiteColor()
 
         let classDateLabel = UILabel()
-        classDateLabel.backgroundColor = UIColor.redColor()
         actPicView.addSubview(classDateLabel)
         classDateLabel.frame = CGRect(x: self.view.frame.width/2, y: (actPicView.frame.height/3)*2.2, width: 150, height: 30)
         classDateLabel.center = CGPointMake(self.view.frame.width/2, (actPicView.frame.height/3)*2.2)
         classDateLabel.textAlignment = NSTextAlignment.Center
+        classDateLabel.font = UIFont.boldSystemFontOfSize(15)
+        classDateLabel.textColor = UIColor.whiteColor()
         
         let classTimeLabel = UILabel()
-        classTimeLabel.backgroundColor = UIColor.redColor()
         actPicView.addSubview(classTimeLabel)
         classTimeLabel.frame = CGRect(x: self.view.frame.width/2, y: (actPicView.frame.height/3)*2.4, width: 150, height: 30)
         classTimeLabel.center = CGPointMake(self.view.frame.width/2, (actPicView.frame.height/3)*2.4)
         classTimeLabel.textAlignment = NSTextAlignment.Center
+        classTimeLabel.font = UIFont.boldSystemFontOfSize(15)
+        classTimeLabel.textColor = UIColor.whiteColor()
         
         
         // pull PFObject detail
@@ -203,16 +210,14 @@ class ActivityDetailViewController: UIViewController {
                             var timeIntervalToAdd = NSTimeInterval(durationInt! * 60)
                             var endTime = date.dateByAddingTimeInterval(timeIntervalToAdd)
                             var endTimeString = dateFormatter.stringFromDate(endTime)
-                            println(endTimeString)
                             var startTimeString = dateFormatter.stringFromDate(date)
-                            println(startTimeString)
                             classTimeLabel.text = "\(startTimeString) - \(endTimeString)"
                             
                         }
                     }
                 }
                 
-
+                //ACTIVITY AGE GROUP
                 
                 //ACTIVITY CLASS CATEGORY
                 
@@ -249,14 +254,38 @@ class ActivityDetailViewController: UIViewController {
         
     }
     
-    func buttonAction(sender:UIButton!)
-    {
+    func buttonAction(sender:UIButton!) {
+
         println("Button tapped")
+        
+        var user = PFUser.currentUser()
+        println(user)
+        
+        var query = PFQuery(className:"Schedule")
+        query.includeKey("sActivityName")
+        query.includeKey("sActivityProvider")
+        query.includeKey("sTeacher")
+        query.getObjectInBackgroundWithId("\(activityId)") {
+            (actvy: PFObject?, error: NSError?) -> Void in
+            if error == nil && actvy != nil {
+                var test: String = (actvy!.objectForKey("testOutput") as? String)!
+
+            }
+        }
+        
+//        var saveData = PFObject(className: "Attendance")
+//        saveData["userIdPointer"] = user
+//        saveData["scheduleIdPointer"] = PFObject(withoutDataWithClassName: "Schedule", objectId: activityId)
+//        saveData["registrationStatus"] = "Registered"
+//        saveData.saveInBackgroundWithTarget(nil, selector: nil)
+//        println(saveData)
+//        println(user)
+//        println(query)
+        
+        
+        
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
 }
+
+
