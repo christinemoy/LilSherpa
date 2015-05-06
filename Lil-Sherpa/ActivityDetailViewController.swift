@@ -118,7 +118,7 @@ class ActivityDetailViewController: UIViewController {
         
         let classLocationLabel = UILabel()
         actPicView.addSubview(classLocationLabel)
-        classLocationLabel.frame = CGRect(x: self.view.frame.width/2, y: actPicView.frame.height/2, width: 150, height: 30)
+        classLocationLabel.frame = CGRect(x: self.view.frame.width/2, y: actPicView.frame.height/2, width: self.view.frame.width*0.8, height: 30)
         classLocationLabel.center = CGPointMake(self.view.frame.width/2, actPicView.frame.height/2)
         classLocationLabel.textAlignment = NSTextAlignment.Center
         classLocationLabel.font = UIFont.boldSystemFontOfSize(20)

@@ -8,13 +8,14 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     var refreshControl : UIRefreshControl?
     
-    var todaysDate = NSDate()
+    var todaysDate: NSDate!
     
-
-
+    var middleButtonDate: NSDate!
     
+    var middleButtonDatePlusOne: NSDate!
     
     let actdetSegueIdentifier = "showActivityDetailSegue"
+    
     
     @IBOutlet weak var middleButton: UIButton!
     
@@ -22,22 +23,34 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     @IBOutlet weak var leftButton: UIButton!
     
-    
-    @IBAction func pressMiddleButton(sender: UIButton) {
-        println("primary")
-    }
-    
-    
-    @IBAction func pressRightButton(sender: UIButton) {
-        println("increment by one day")
-    }
-    
-    @IBAction func pressLeftButton(sender: UIButton) {
-        println("decrement by one day")
-    }
-    
-    
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    func dateComponents(date: NSDate) -> NSDate {
+        
+        let flags: NSCalendarUnit = NSCalendarUnit.CalendarUnitDay | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitYear
+        let components = NSCalendar.currentCalendar().components(flags, fromDate: date)
+        
+        var dateFDYear = components.year
+        var dateFDMonth = components.month
+        var dateFDDay = components.day
+        
+        let middleButtonDateComponents = NSDateComponents()
+        middleButtonDateComponents.year = dateFDYear
+        middleButtonDateComponents.month = dateFDMonth
+        middleButtonDateComponents.day = dateFDDay
+        middleButtonDateComponents.hour = 0
+        middleButtonDateComponents.minute = 0
+        middleButtonDateComponents.second = 0
+        
+        let middleButtonDate = NSCalendar.currentCalendar().dateFromComponents(middleButtonDateComponents)!
+        return middleButtonDate
+    }
+    
+    func datePlusOne(date: NSDate) -> NSDate {
+        var nextDate = date.dateByAddingTimeInterval(60*60*24)
+        return nextDate
+    }
     
     func programmaticButtonUpdate(){
         
@@ -45,13 +58,18 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         dateFormatter.dateFormat = "EEEE, MMMM d"
         let timeZone = NSTimeZone(name: "EDT")
         dateFormatter.timeZone = timeZone
-        var middleDate = dateFormatter.stringFromDate(todaysDate)
         
-        var rightDateNs = todaysDate.dateByAddingTimeInterval(60*60*24)
+        if middleButtonDate == nil {
+            middleButtonDate = NSDate()
+        }
+        
+        var middleDate = dateFormatter.stringFromDate(middleButtonDate)
+        
+        var rightDateNs = middleButtonDate.dateByAddingTimeInterval(60*60*24)
         
         var rightDate = dateFormatter.stringFromDate(rightDateNs)
         
-        var leftDateNs = todaysDate.dateByAddingTimeInterval(-(60*60*24))
+        var leftDateNs = middleButtonDate.dateByAddingTimeInterval(-(60*60*24))
         
         var leftDate = dateFormatter.stringFromDate(leftDateNs)
         
@@ -60,36 +78,61 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         leftButton.setTitle(leftDate, forState: UIControlState.Normal)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == actdetSegueIdentifier {
-            
-            if let destination = segue.destinationViewController as? ActivityDetailViewController {
-                
-                if let activityIndex = self.tableView.indexPathForSelectedRow()?.row {
-                    
-                    destination.activityId = (activities[activityIndex].valueForKey("objectId") as? String)!
-                }
-            }
-        }
+    
+    @IBAction func pressMiddleButton(sender: UIButton) {
+        println("middle button pressed")
+    }
+    
+    
+    @IBAction func pressRightButton(sender: UIButton) {
+        println("right button pressed")
+        middleButtonDate = middleButtonDate.dateByAddingTimeInterval(60*60*24)
+        middleButtonDatePlusOne = datePlusOne(middleButtonDate)
+        programmaticButtonUpdate()
+        loadActivities()
+    }
+    
+    @IBAction func pressLeftButton(sender: UIButton) {
+        println("left button pressed")
+        middleButtonDate = middleButtonDate.dateByAddingTimeInterval(-(60*60*24))
+        middleButtonDatePlusOne = datePlusOne(middleButtonDate)
+        programmaticButtonUpdate()
+        loadActivities()
+
     }
 
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        self.loadActivities()
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: "loadActivities", forControlEvents: UIControlEvents.ValueChanged)
         
-        self.tableView.addSubview(refreshControl!)
+        super.viewDidLoad()
         
         programmaticButtonUpdate()
         
+        todaysDate = NSDate()
+        middleButtonDate = dateComponents(todaysDate)
+        println("viewDidLoad \(middleButtonDate)")
+        middleButtonDatePlusOne = datePlusOne(middleButtonDate)
+        println("viewDidLoad \(middleButtonDatePlusOne)")
+        
+        self.loadActivities()
+        
+        refreshControl = UIRefreshControl()
+        
+        refreshControl?.addTarget(self, action: "loadActivities", forControlEvents: UIControlEvents.ValueChanged)
+        
+        self.tableView.addSubview(refreshControl!)
         
     }
     
     
     func loadActivities(name: String? = nil, sortAsc: Bool? = nil) {
         var query = PFQuery(className:"Schedule")
+        query.whereKey("sDate", lessThan: middleButtonDatePlusOne)
+        query.whereKey("sDate", greaterThanOrEqualTo: middleButtonDate)
+        
+        println("Middle button date is \(middleButtonDate)")
+        println("Middle button date plus one is \(middleButtonDatePlusOne)")
+
         query.includeKey("sActivityName")
         query.includeKey("sActivityProvider")
         query.includeKey("sTeacher")
@@ -224,6 +267,19 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                 
             }
             
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == actdetSegueIdentifier {
+            
+            if let destination = segue.destinationViewController as? ActivityDetailViewController {
+                
+                if let activityIndex = self.tableView.indexPathForSelectedRow()?.row {
+                    
+                    destination.activityId = (activities[activityIndex].valueForKey("objectId") as? String)!
+                }
+            }
         }
     }
     
