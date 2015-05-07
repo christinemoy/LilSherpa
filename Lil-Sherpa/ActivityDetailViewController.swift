@@ -273,14 +273,14 @@ class ActivityDetailViewController: UIViewController {
             }
         }
         
-//        var saveData = PFObject(className: "Attendance")
-//        saveData["userIdPointer"] = user
-//        saveData["scheduleIdPointer"] = PFObject(withoutDataWithClassName: "Schedule", objectId: activityId)
-//        saveData["registrationStatus"] = "Registered"
-//        saveData.saveInBackgroundWithTarget(nil, selector: nil)
-//        println(saveData)
-//        println(user)
-//        println(query)
+        var saveData = PFObject(className: "Attendance")
+        saveData["userIdPointer"] = user
+        saveData["scheduleIdPointer"] = PFObject(withoutDataWithClassName: "Schedule", objectId: activityId)
+        saveData["registrationStatus"] = "Registered"
+        saveData.saveInBackgroundWithTarget(nil, selector: nil)
+        println(saveData)
+        println(user)
+        println(query)
         
         
         

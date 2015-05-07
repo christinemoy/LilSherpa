@@ -10,6 +10,7 @@ import UIKit
 import Parse
 
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -21,11 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("8RmHDyCKgAUX2R5gYq40THmVAK60Nw2fpDqPcqvz",
             clientKey: "BQ64ocQlqdF8dCorcCLIcwDxQAZsavFIXDuUMgHN")
         
-        
-        
-        
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions ?? [NSObject: AnyObject]())
         
         return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
     func applicationWillResignActive(application: UIApplication) {

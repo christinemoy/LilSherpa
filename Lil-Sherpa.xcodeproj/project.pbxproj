@@ -22,6 +22,7 @@
 		7E34922A1AEB1F7C008BDE93 /* MySherpaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3492291AEB1F7C008BDE93 /* MySherpaViewController.swift */; };
 		7E34922C1AEBD302008BDE93 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E34922B1AEBD302008BDE93 /* ActivityCell.swift */; };
 		7E3492301AED76EF008BDE93 /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E34922F1AED76EF008BDE93 /* ActivityDetailViewController.swift */; };
+		7E5B86AB1AFAF7A300CE4318 /* bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5B86AA1AFAF7A300CE4318 /* bridge.m */; };
 		7E6B5A6D1AF66CE60084550C /* kidville.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7E6B5A6C1AF66CE60084550C /* kidville.jpg */; };
 		7EBF08501AF0586800170543 /* babyyoga.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EBF084F1AF0586800170543 /* babyyoga.jpg */; };
 		FAB7AF9389E4A9196C5BDD35 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7316D42AA2C9736FA8D5DCE5 /* libPods.a */; };
@@ -59,6 +60,8 @@
 		7E3492291AEB1F7C008BDE93 /* MySherpaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySherpaViewController.swift; sourceTree = "<group>"; };
 		7E34922B1AEBD302008BDE93 /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityCell.swift; path = ../ActivityCell.swift; sourceTree = "<group>"; };
 		7E34922F1AED76EF008BDE93 /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
+		7E5B86A91AFAF7A300CE4318 /* Lil-Sherpa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lil-Sherpa-Bridging-Header.h"; sourceTree = "<group>"; };
+		7E5B86AA1AFAF7A300CE4318 /* bridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bridge.m; sourceTree = "<group>"; };
 		7E6B5A6C1AF66CE60084550C /* kidville.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kidville.jpg; sourceTree = "<group>"; };
 		7EBF084F1AF0586800170543 /* babyyoga.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = babyyoga.jpg; sourceTree = "<group>"; };
 		FE490A0C1399CB44762D0B05 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +130,7 @@
 				7E34922F1AED76EF008BDE93 /* ActivityDetailViewController.swift */,
 				7E34922B1AEBD302008BDE93 /* ActivityCell.swift */,
 				7E3491FD1AEA526B008BDE93 /* AppDelegate.swift */,
+				7E5B86AA1AFAF7A300CE4318 /* bridge.m */,
 				7EBF084F1AF0586800170543 /* babyyoga.jpg */,
 				7E3491FF1AEA526B008BDE93 /* ViewController.swift */,
 				7E3492011AEA526B008BDE93 /* Main.storyboard */,
@@ -140,6 +144,7 @@
 				7E3492041AEA526B008BDE93 /* Images.xcassets */,
 				7E3492061AEA526B008BDE93 /* LaunchScreen.xib */,
 				7E3491FB1AEA526B008BDE93 /* Supporting Files */,
+				7E5B86A91AFAF7A300CE4318 /* Lil-Sherpa-Bridging-Header.h */,
 			);
 			path = "Lil-Sherpa";
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E5B86AB1AFAF7A300CE4318 /* bridge.m in Sources */,
 				7E3492301AED76EF008BDE93 /* ActivityDetailViewController.swift in Sources */,
 				7E3492001AEA526B008BDE93 /* ViewController.swift in Sources */,
 				7E3492241AEA7353008BDE93 /* MenuViewController.swift in Sources */,
@@ -446,9 +452,12 @@
 			baseConfigurationReference = FE490A0C1399CB44762D0B05 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "Lil-Sherpa/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Lil-Sherpa/Lil-Sherpa-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -457,9 +466,11 @@
 			baseConfigurationReference = 3A2AD313306F13B52D07213D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "Lil-Sherpa/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Lil-Sherpa/Lil-Sherpa-Bridging-Header.h";
 			};
 			name = Release;
 		};
