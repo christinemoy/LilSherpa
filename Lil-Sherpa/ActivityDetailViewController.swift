@@ -12,7 +12,7 @@ class ActivityDetailViewController: UIViewController {
 
     var activityId = String()
     
-    var activityName : PFObject!
+    var activityObject : PFObject!
 
     @IBOutlet weak var activityNameLabel: UILabel!
 
@@ -158,7 +158,7 @@ class ActivityDetailViewController: UIViewController {
             (actvy: PFObject?, error: NSError?) -> Void in
             if error == nil && actvy != nil {
                 
-                self.activityName = actvy as PFObject?
+                self.activityObject = actvy as PFObject?
                 
                 
                 
@@ -281,8 +281,8 @@ class ActivityDetailViewController: UIViewController {
 //            }
 //        }
         
-        println("activity is \(activityName)")
-        var something = activityName.objectId
+        println("activity is \(activityObject)")
+        var something = activityObject.objectId
         println("something is \(something)")
         
         
