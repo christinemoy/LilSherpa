@@ -12,7 +12,7 @@ class ActivityDetailViewController: UIViewController {
 
     var activityId = String()
     
-//    var activityName = String() WHY DOESN'T THIS WORK?
+    var activityName : PFObject!
 
     @IBOutlet weak var activityNameLabel: UILabel!
 
@@ -24,8 +24,8 @@ class ActivityDetailViewController: UIViewController {
     
 
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+//        super.viewDidLoad()
 
         // set up scroller size and color
         let scroller = UIScrollView()
@@ -157,6 +157,11 @@ class ActivityDetailViewController: UIViewController {
         query.getObjectInBackgroundWithId("\(activityId)") {
             (actvy: PFObject?, error: NSError?) -> Void in
             if error == nil && actvy != nil {
+                
+                self.activityName = actvy as PFObject?
+                
+                
+                
                 println(actvy)
                 var test: String = (actvy!.objectForKey("testOutput") as? String)!
                 
@@ -191,7 +196,7 @@ class ActivityDetailViewController: UIViewController {
                     var dateFormatter = NSDateFormatter()
                     dateFormatter.dateFormat = "EEEE, MMMM d"
                     classDateLabel.text = dateFormatter.stringFromDate(a)
-                    }
+                }
 
                 
                 //ACTIVITY START AND END TIME (IN LOCAL TIME)
@@ -241,6 +246,7 @@ class ActivityDetailViewController: UIViewController {
         
         // add button
         let button   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        
         button.backgroundColor = UIColor(red: (248/255), green: (131/255), blue: (121/255), alpha: 1)
         button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         button.setTitle("REGISTER", forState: UIControlState.Normal)
@@ -254,6 +260,8 @@ class ActivityDetailViewController: UIViewController {
         
     }
     
+    
+    
     func buttonAction(sender:UIButton!) {
 
         println("Button tapped")
@@ -261,17 +269,22 @@ class ActivityDetailViewController: UIViewController {
         var user = PFUser.currentUser()
         println(user)
         
-        var query = PFQuery(className:"Schedule")
-        query.includeKey("sActivityName")
-        query.includeKey("sActivityProvider")
-        query.includeKey("sTeacher")
-        query.getObjectInBackgroundWithId("\(activityId)") {
-            (actvy: PFObject?, error: NSError?) -> Void in
-            if error == nil && actvy != nil {
-                var test: String = (actvy!.objectForKey("testOutput") as? String)!
-
-            }
-        }
+//        var query = PFQuery(className:"Schedule")
+//        query.includeKey("sActivityName")
+//        query.includeKey("sActivityProvider")
+//        query.includeKey("sTeacher")
+//        query.getObjectInBackgroundWithId("\(activityId)") {
+//            (actvy: PFObject?, error: NSError?) -> Void in
+//            if error == nil && actvy != nil {
+//                var test: String = (actvy!.objectForKey("testOutput") as? String)!
+//
+//            }
+//        }
+        
+        println("activity is \(activityName)")
+        var something = activityName.objectId
+        println("something is \(something)")
+        
         
         var saveData = PFObject(className: "Attendance")
         saveData["userIdPointer"] = user
@@ -280,7 +293,7 @@ class ActivityDetailViewController: UIViewController {
         saveData.saveInBackgroundWithTarget(nil, selector: nil)
         println(saveData)
         println(user)
-        println(query)
+//        println(query)
         
         
         

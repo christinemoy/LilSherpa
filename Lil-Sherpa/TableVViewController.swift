@@ -116,16 +116,21 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
         self.loadActivities()
         
-        refreshControl = UIRefreshControl()
+//        refreshControl = UIRefreshControl()
         
-        refreshControl?.addTarget(self, action: "loadActivities", forControlEvents: UIControlEvents.ValueChanged)
+//        refreshControl?.addTarget(self, action: "loadActivities", forControlEvents: UIControlEvents.ValueChanged)
         
-        self.tableView.addSubview(refreshControl!)
+//        self.tableView.addSubview(refreshControl!)
+        
+        self.tableView.reloadData()
         
     }
     
     
     func loadActivities(name: String? = nil, sortAsc: Bool? = nil) {
+        
+//        activities.removeAll(keepCapacity: false)
+        
         var query = PFQuery(className:"Schedule")
         query.whereKey("sDate", lessThan: middleButtonDatePlusOne)
         query.whereKey("sDate", greaterThanOrEqualTo: middleButtonDate)
@@ -152,19 +157,24 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         query.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
-                if let objects = objects as? [PFObject] {
+                if let unwrappedObjects = objects as? [PFObject] {
 
+                    self.activities = unwrappedObjects
                     
-                    for object in objects {
-                        var activityDetail = object["sActivityName"] as? PFObject
-                        self.activities = objects
-//                        println("\(objects)")
-//                        println("\(activityDetail)")
-                    }
+//                    for object in unwrappedObjects {
+////                        var activityDetail = object["sActivityName"] as? PFObject
+////                        self.activities.append(object)
+////                        println("\(objects)")
+////                        println("\(activityDetail)")
+//                    }
                     
                 }
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                })
+ 
+//                self.refreshControl?.endRefreshing()
             } else {
                 // Log details of the failure
             }

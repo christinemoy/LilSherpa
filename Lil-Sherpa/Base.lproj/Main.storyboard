@@ -170,7 +170,6 @@
                                 </state>
                                 <connections>
                                     <action selector="pressFacebookButton:" destination="ppJ-Ah-E1a" eventType="touchUpInside" id="mSP-2k-01q"/>
-                                    <segue destination="f3h-cE-zrz" kind="show" identifier="login" id="RTl-xx-ekd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z66-Kh-Kg9">
@@ -222,6 +221,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="i09-1Q-u9m"/>
+                    <connections>
+                        <segue destination="f3h-cE-zrz" kind="show" identifier="login" id="zOa-7I-SmR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KLE-qb-Mmn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -810,6 +812,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="RTl-xx-ekd"/>
+        <segue reference="zOa-7I-SmR"/>
     </inferredMetricsTieBreakers>
 </document>
