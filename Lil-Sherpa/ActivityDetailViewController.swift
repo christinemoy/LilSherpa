@@ -13,6 +13,8 @@ class ActivityDetailViewController: UIViewController {
     var activityId = String()
     
     var activityObject : PFObject!
+    
+    var confirmationPageId = "confirmationpage"
 
     @IBOutlet weak var activityNameLabel: UILabel!
 
@@ -266,6 +268,8 @@ class ActivityDetailViewController: UIViewController {
 
         println("Button tapped")
         
+        self.performSegueWithIdentifier(confirmationPageId, sender: sender)
+        
         var user = PFUser.currentUser()
         println(user)
         
@@ -295,8 +299,21 @@ class ActivityDetailViewController: UIViewController {
         println(user)
 //        println(query)
         
+
         
         
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == confirmationPageId {
+            
+            if let destination = segue.destinationViewController as? ConfirmViewController {
+                
+                destination.scheduleObject = activityObject
+                
+            }
+        }
     }
 
 }

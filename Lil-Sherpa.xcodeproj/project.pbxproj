@@ -23,6 +23,7 @@
 		7E34922C1AEBD302008BDE93 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E34922B1AEBD302008BDE93 /* ActivityCell.swift */; };
 		7E3492301AED76EF008BDE93 /* ActivityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E34922F1AED76EF008BDE93 /* ActivityDetailViewController.swift */; };
 		7E5B86AB1AFAF7A300CE4318 /* bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5B86AA1AFAF7A300CE4318 /* bridge.m */; };
+		7E5B86AD1AFE517E00CE4318 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5B86AC1AFE517E00CE4318 /* ConfirmViewController.swift */; };
 		7E6B5A6D1AF66CE60084550C /* kidville.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7E6B5A6C1AF66CE60084550C /* kidville.jpg */; };
 		7EBF08501AF0586800170543 /* babyyoga.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7EBF084F1AF0586800170543 /* babyyoga.jpg */; };
 		FAB7AF9389E4A9196C5BDD35 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7316D42AA2C9736FA8D5DCE5 /* libPods.a */; };
@@ -62,6 +63,7 @@
 		7E34922F1AED76EF008BDE93 /* ActivityDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailViewController.swift; sourceTree = "<group>"; };
 		7E5B86A91AFAF7A300CE4318 /* Lil-Sherpa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lil-Sherpa-Bridging-Header.h"; sourceTree = "<group>"; };
 		7E5B86AA1AFAF7A300CE4318 /* bridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bridge.m; sourceTree = "<group>"; };
+		7E5B86AC1AFE517E00CE4318 /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		7E6B5A6C1AF66CE60084550C /* kidville.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kidville.jpg; sourceTree = "<group>"; };
 		7EBF084F1AF0586800170543 /* babyyoga.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = babyyoga.jpg; sourceTree = "<group>"; };
 		FE490A0C1399CB44762D0B05 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				7EBF084F1AF0586800170543 /* babyyoga.jpg */,
 				7E3491FF1AEA526B008BDE93 /* ViewController.swift */,
 				7E3492011AEA526B008BDE93 /* Main.storyboard */,
+				7E5B86AC1AFE517E00CE4318 /* ConfirmViewController.swift */,
 				7E3492291AEB1F7C008BDE93 /* MySherpaViewController.swift */,
 				7E3492271AEB1F47008BDE93 /* RefineSearchViewController.swift */,
 				7E3492251AEB1E92008BDE93 /* TableVViewController.swift */,
@@ -314,6 +317,7 @@
 				7E5B86AB1AFAF7A300CE4318 /* bridge.m in Sources */,
 				7E3492301AED76EF008BDE93 /* ActivityDetailViewController.swift in Sources */,
 				7E3492001AEA526B008BDE93 /* ViewController.swift in Sources */,
+				7E5B86AD1AFE517E00CE4318 /* ConfirmViewController.swift in Sources */,
 				7E3492241AEA7353008BDE93 /* MenuViewController.swift in Sources */,
 				7E34922C1AEBD302008BDE93 /* ActivityCell.swift in Sources */,
 				7E34921E1AEA720C008BDE93 /* LaunchViewController.swift in Sources */,
