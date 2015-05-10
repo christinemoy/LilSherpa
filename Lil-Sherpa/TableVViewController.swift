@@ -4,7 +4,7 @@ import Foundation
 
 class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
     
-    var activities = [PFObject]()
+    var arrayOfScheduleObjects = [PFObject]()
     
     var refreshControl : UIRefreshControl?
     
@@ -80,12 +80,11 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     
     @IBAction func pressMiddleButton(sender: UIButton) {
-        println("middle button pressed")
+
     }
     
     
     @IBAction func pressRightButton(sender: UIButton) {
-        println("right button pressed")
         middleButtonDate = middleButtonDate.dateByAddingTimeInterval(60*60*24)
         middleButtonDatePlusOne = datePlusOne(middleButtonDate)
         programmaticButtonUpdate()
@@ -93,7 +92,6 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     }
     
     @IBAction func pressLeftButton(sender: UIButton) {
-        println("left button pressed")
         middleButtonDate = middleButtonDate.dateByAddingTimeInterval(-(60*60*24))
         middleButtonDatePlusOne = datePlusOne(middleButtonDate)
         programmaticButtonUpdate()
@@ -110,9 +108,7 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
         
         todaysDate = NSDate()
         middleButtonDate = dateComponents(todaysDate)
-        println("viewDidLoad \(middleButtonDate)")
         middleButtonDatePlusOne = datePlusOne(middleButtonDate)
-        println("viewDidLoad \(middleButtonDatePlusOne)")
         
         self.loadActivities()
         
@@ -129,18 +125,13 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     
     func loadActivities(name: String? = nil, sortAsc: Bool? = nil) {
         
-//        activities.removeAll(keepCapacity: false)
-        
-        var query = PFQuery(className:"Schedule")
-        query.whereKey("sDate", lessThan: middleButtonDatePlusOne)
-        query.whereKey("sDate", greaterThanOrEqualTo: middleButtonDate)
-        
-        println("Middle button date is \(middleButtonDate)")
-        println("Middle button date plus one is \(middleButtonDatePlusOne)")
+        var scheduleObjectQuery = PFQuery(className:"Schedule")
+        scheduleObjectQuery.whereKey("sDate", lessThan: middleButtonDatePlusOne)
+        scheduleObjectQuery.whereKey("sDate", greaterThanOrEqualTo: middleButtonDate)
 
-        query.includeKey("sActivityName")
-        query.includeKey("sActivityProvider")
-        query.includeKey("sTeacher")
+        scheduleObjectQuery.includeKey("sActivityName")
+        scheduleObjectQuery.includeKey("sActivityProvider")
+        scheduleObjectQuery.includeKey("sTeacher")
         
 //        if let name = name {
 //            query.whereKey("testOutput", equalTo:name)
@@ -154,19 +145,12 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
 //            }
 //        }
         
-        query.findObjectsInBackgroundWithBlock {
+        scheduleObjectQuery.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
                 if let unwrappedObjects = objects as? [PFObject] {
 
-                    self.activities = unwrappedObjects
-                    
-//                    for object in unwrappedObjects {
-////                        var activityDetail = object["sActivityName"] as? PFObject
-////                        self.activities.append(object)
-////                        println("\(objects)")
-////                        println("\(activityDetail)")
-//                    }
+                    self.arrayOfScheduleObjects = unwrappedObjects
                     
                 }
                 
@@ -221,33 +205,31 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("activityCell") as! ActivityCell
         
-        let activity = activities[indexPath.row]
+        let scheduleObject = arrayOfScheduleObjects[indexPath.row]
         
-        let date = activity["sDate"] as? NSDate
+        let date = scheduleObject["sDate"] as? NSDate
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "h:mm a"
         let timeZone = NSTimeZone(name: "EDT")
         dateFormatter.timeZone = timeZone
-        //need to figure out how to adjust when EDT converts to EST
-        
-//        dateFormatter.dateFormat = "EEEE, MMMM d, yyyy"
+
         var dateString = dateFormatter.stringFromDate(date!)
         
         cell.activityStartTimeLabel.text = dateString
         
-        if let actDetPointer = activity["sActivityName"] as? PFObject {
+        if let actDetPointer = scheduleObject["sActivityName"] as? PFObject {
             if let dur = actDetPointer["aDuration"] as? String {
                 cell.activityDurationLabel.text = ("\(dur) min")
                 cell.activityNameLabel.text = actDetPointer["aName"] as? String
             }
         }
         
-        if let actProvPointer = activity["sActivityProvider"] as? PFObject {
+        if let actProvPointer = scheduleObject["sActivityProvider"] as? PFObject {
             cell.activityLocationLabel.text = actProvPointer["apName"] as? String
             cell.activityNeighborhoodLabel.text = actProvPointer["apNeighborhoodL2"] as? String
         }
         
-        if let actTeacherPointer = activity["sTeacher"] as? PFObject {
+        if let actTeacherPointer = scheduleObject["sTeacher"] as? PFObject {
             if let tchrfn = actTeacherPointer["tFirstName"] as? String {
                 if let tchrln = actTeacherPointer["tLastName"] as? String {
                     cell.activityTeacherLabel.text = ("\(tchrfn) \(tchrln)")
@@ -260,17 +242,17 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return activities.count
+        return arrayOfScheduleObjects.count
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            let activity = activities[indexPath.row]
+            let activity = arrayOfScheduleObjects[indexPath.row]
             activity.deleteInBackgroundWithBlock{ (_, error) -> Void in
                 if let error = error {
                     println("you dont have rights delete it - \(error.description)")
                 } else {
-                    self.activities.removeAtIndex(indexPath.row)
+                    self.arrayOfScheduleObjects.removeAtIndex(indexPath.row)
                     self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
                     println("deleted successfully")
                 }
@@ -287,7 +269,7 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                 
                 if let activityIndex = self.tableView.indexPathForSelectedRow()?.row {
                     
-                    destination.activityId = (activities[activityIndex].valueForKey("objectId") as? String)!
+                    destination.scheduleObjectId = (arrayOfScheduleObjects[activityIndex].valueForKey("objectId") as? String)!
                 }
             }
         }

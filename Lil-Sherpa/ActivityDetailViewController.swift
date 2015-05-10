@@ -10,24 +10,20 @@ import UIKit
 
 class ActivityDetailViewController: UIViewController {
 
-    var activityId = String()
+    var scheduleObjectId = String()
     
-    var activityObject : PFObject!
+    var scheduleObject : PFObject!
+    
+    var attendanceObject : PFObject!
+    
+    var registrationStatus = String()
     
     var confirmationPageId = "confirmationpage"
 
     @IBOutlet weak var activityNameLabel: UILabel!
-
-//    override func viewWillAppear(animated: Bool) {
-//        activityNameLabel.text = activityId
-//        println(activityId)
-//
-//    } DONT NEED THIS ANYMORE
     
-
-    
-    override func viewWillAppear(animated: Bool) {
-//        super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
         // set up scroller size and color
         let scroller = UIScrollView()
@@ -152,20 +148,15 @@ class ActivityDetailViewController: UIViewController {
         
         
         // pull PFObject detail
-        var query = PFQuery(className:"Schedule")
-        query.includeKey("sActivityName")
-        query.includeKey("sActivityProvider")
-        query.includeKey("sTeacher")
-        query.getObjectInBackgroundWithId("\(activityId)") {
+        var scheduleQuery = PFQuery(className:"Schedule")
+        scheduleQuery.includeKey("sActivityName")
+        scheduleQuery.includeKey("sActivityProvider")
+        scheduleQuery.includeKey("sTeacher")
+        scheduleQuery.getObjectInBackgroundWithId("\(scheduleObjectId)") {
             (actvy: PFObject?, error: NSError?) -> Void in
             if error == nil && actvy != nil {
                 
-                self.activityObject = actvy as PFObject?
-                
-                
-                
-                println(actvy)
-                var test: String = (actvy!.objectForKey("testOutput") as? String)!
+                self.scheduleObject = actvy as PFObject?
                 
                 //ACTIVITY CLASS NAME
                 
@@ -234,17 +225,10 @@ class ActivityDetailViewController: UIViewController {
                 
                 //ACTIVITY PROVIDER ABOUT
                 
-                
-                
-                
-                
-                
             } else {
                 println(error)
             }
         }
-        
-//        classDetailLabel.text = activityName WHY DOESN'T THIS WORK?
         
         // add button
         let button   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
@@ -270,9 +254,6 @@ class ActivityDetailViewController: UIViewController {
         
         self.performSegueWithIdentifier(confirmationPageId, sender: sender)
         
-        var user = PFUser.currentUser()
-        println(user)
-        
 //        var query = PFQuery(className:"Schedule")
 //        query.includeKey("sActivityName")
 //        query.includeKey("sActivityProvider")
@@ -285,21 +266,16 @@ class ActivityDetailViewController: UIViewController {
 //            }
 //        }
         
-        println("activity is \(activityObject)")
-        var something = activityObject.objectId
-        println("something is \(something)")
-        
+        var user = PFUser.currentUser()
         
         var saveData = PFObject(className: "Attendance")
         saveData["userIdPointer"] = user
-        saveData["scheduleIdPointer"] = PFObject(withoutDataWithClassName: "Schedule", objectId: activityId)
+        saveData["scheduleIdPointer"] = PFObject(withoutDataWithClassName: "Schedule", objectId: scheduleObjectId)
         saveData["registrationStatus"] = "Registered"
         saveData.saveInBackgroundWithTarget(nil, selector: nil)
+        
         println(saveData)
         println(user)
-//        println(query)
-        
-
         
         
         
@@ -310,7 +286,7 @@ class ActivityDetailViewController: UIViewController {
             
             if let destination = segue.destinationViewController as? ConfirmViewController {
                 
-                destination.scheduleObject = activityObject
+                destination.scheduleObject = scheduleObject
                 
             }
         }

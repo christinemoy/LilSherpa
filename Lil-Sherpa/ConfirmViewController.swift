@@ -26,7 +26,7 @@ class ConfirmViewController: UIViewController {
     
     @IBOutlet weak var startEndTimeLabel: UILabel!
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidLoad() {
         
         println("actOb is \(scheduleObject)")
         
@@ -105,6 +105,8 @@ class ConfirmViewController: UIViewController {
     }
         
     @IBAction func pressedConfirmRes(sender: UIButton) {
+        
+        
     }
     
     @IBAction func pressedCancel(sender: UIButton) {
