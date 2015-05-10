@@ -9,8 +9,6 @@ import Parse
 import UIKit
 
 class ActivityDetailViewController: UIViewController {
-
-    var scheduleObjectId = String()
     
     var scheduleObject : PFObject!
     
@@ -148,72 +146,72 @@ class ActivityDetailViewController: UIViewController {
         
         
         // pull PFObject detail
-        var scheduleQuery = PFQuery(className:"Schedule")
-        scheduleQuery.includeKey("sActivityName")
-        scheduleQuery.includeKey("sActivityProvider")
-        scheduleQuery.includeKey("sTeacher")
-        scheduleQuery.getObjectInBackgroundWithId("\(scheduleObjectId)") {
-            (actvy: PFObject?, error: NSError?) -> Void in
-            if error == nil && actvy != nil {
-                
-                self.scheduleObject = actvy as PFObject?
-                
+//        var scheduleQuery = PFQuery(className:"Schedule")
+//        scheduleQuery.includeKey("sActivityName")
+//        scheduleQuery.includeKey("sActivityProvider")
+//        scheduleQuery.includeKey("sTeacher")
+//        scheduleQuery.getObjectInBackgroundWithId("\(scheduleObjectId)") {
+//            (actvy: PFObject?, error: NSError?) -> Void in
+//            if error == nil && actvy != nil {
+//                
+//                self.scheduleObject = actvy as PFObject?
+        
                 //ACTIVITY CLASS NAME
                 
-                if let actPointer = actvy!.objectForKey("sActivityName") as? PFObject {
-                    if let a = actPointer.objectForKey("aName") as? String {
-                        classNameLabel.text = a
-                    }
+            if let actPointer = scheduleObject.objectForKey("sActivityName") as? PFObject {
+                if let a = actPointer.objectForKey("aName") as? String {
+                    classNameLabel.text = a
                 }
+            }
                 
                 //ACTIVITY PROVIDER & LOCATION NAME
-                if let actPointer = actvy!.objectForKey("sActivityProvider") as? PFObject {
-                    if let a = actPointer.objectForKey("apName") as? String {
-                        classLocationLabel.text = a
-                    }
+            if let actPointer = scheduleObject.objectForKey("sActivityProvider") as? PFObject {
+                if let a = actPointer.objectForKey("apName") as? String {
+                    classLocationLabel.text = a
                 }
+            }
                 
                 //ACTIVITY TEACHER NAME
                 
-                if let actPointer = actvy!.objectForKey("sTeacher") as? PFObject {
-                    if let a = actPointer.objectForKey("tFirstName") as? String {
-                        if let b = actPointer.objectForKey("tLastName") as? String {
-                            classTeacherLabel.text = "\(a) \(b)"
-                        }
+            if let actPointer = scheduleObject.objectForKey("sTeacher") as? PFObject {
+                if let a = actPointer.objectForKey("tFirstName") as? String {
+                    if let b = actPointer.objectForKey("tLastName") as? String {
+                        classTeacherLabel.text = "\(a) \(b)"
                     }
                 }
+            }
                 
                 //ACTIVITY DATE
                 
-                if let a = actvy!.objectForKey("sDate") as? NSDate {
-                    var dateFormatter = NSDateFormatter()
-                    dateFormatter.dateFormat = "EEEE, MMMM d"
-                    classDateLabel.text = dateFormatter.stringFromDate(a)
-                }
+            if let a = scheduleObject.objectForKey("sDate") as? NSDate {
+                var dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "EEEE, MMMM d"
+                classDateLabel.text = dateFormatter.stringFromDate(a)
+            }
 
                 
                 //ACTIVITY START AND END TIME (IN LOCAL TIME)
                 
-                if let a = actvy!.objectForKey("sActivityName") as? PFObject {
+            if let a = scheduleObject.objectForKey("sActivityName") as? PFObject {
 
-                    if let date = actvy?.objectForKey("sDate") as? NSDate {
-                        
-                        if let duration = a.objectForKey("aDuration") as? String {
+                if let date = scheduleObject.objectForKey("sDate") as? NSDate {
                     
-                            var dateFormatter = NSDateFormatter()
-                            dateFormatter.dateFormat = "h:mm a"
-                            let timeZone = NSTimeZone(name: "EDT")
-                            dateFormatter.timeZone = timeZone
-                            var durationInt = duration.toInt()
-                            var timeIntervalToAdd = NSTimeInterval(durationInt! * 60)
-                            var endTime = date.dateByAddingTimeInterval(timeIntervalToAdd)
-                            var endTimeString = dateFormatter.stringFromDate(endTime)
-                            var startTimeString = dateFormatter.stringFromDate(date)
-                            classTimeLabel.text = "\(startTimeString) - \(endTimeString)"
-                            
-                        }
+                    if let duration = a.objectForKey("aDuration") as? String {
+                
+                        var dateFormatter = NSDateFormatter()
+                        dateFormatter.dateFormat = "h:mm a"
+                        let timeZone = NSTimeZone(name: "EDT")
+                        dateFormatter.timeZone = timeZone
+                        var durationInt = duration.toInt()
+                        var timeIntervalToAdd = NSTimeInterval(durationInt! * 60)
+                        var endTime = date.dateByAddingTimeInterval(timeIntervalToAdd)
+                        var endTimeString = dateFormatter.stringFromDate(endTime)
+                        var startTimeString = dateFormatter.stringFromDate(date)
+                        classTimeLabel.text = "\(startTimeString) - \(endTimeString)"
+                        
                     }
                 }
+            }
                 
                 //ACTIVITY AGE GROUP
                 
@@ -225,10 +223,10 @@ class ActivityDetailViewController: UIViewController {
                 
                 //ACTIVITY PROVIDER ABOUT
                 
-            } else {
-                println(error)
-            }
-        }
+//            } else {
+//                println(error)
+//            }
+//        }
         
         // add button
         let button   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
@@ -270,7 +268,7 @@ class ActivityDetailViewController: UIViewController {
         
         var saveData = PFObject(className: "Attendance")
         saveData["userIdPointer"] = user
-        saveData["scheduleIdPointer"] = PFObject(withoutDataWithClassName: "Schedule", objectId: scheduleObjectId)
+        saveData["scheduleIdPointer"] = scheduleObject
         saveData["registrationStatus"] = "Registered"
         saveData.saveInBackgroundWithTarget(nil, selector: nil)
         
