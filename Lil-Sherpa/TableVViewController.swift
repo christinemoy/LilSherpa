@@ -269,7 +269,7 @@ class TableVViewController: UIViewController, UISearchBarDelegate, UITableViewDa
                 
                 if let activityIndex = self.tableView.indexPathForSelectedRow()?.row {
                     
-                    destination.scheduleObject = (arrayOfScheduleObjects[activityIndex] as? PFObject)!
+                    destination.scheduleObject = (arrayOfScheduleObjects[activityIndex])
                 }
             }
         }
