@@ -87,7 +87,7 @@
                                     <constraint firstAttribute="width" constant="206" id="i6N-wZ-C2I"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -129,7 +129,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="3vO-dF-i40"/>
+                    <navigationItem key="navigationItem" title="LITTLE SHERPA" id="3vO-dF-i40"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OyL-LZ-cEH" sceneMemberID="firstResponder"/>
             </objects>
@@ -192,7 +192,7 @@
                                     <constraint firstAttribute="width" constant="206" id="XS3-D0-txt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -220,7 +220,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="i09-1Q-u9m"/>
+                    <navigationItem key="navigationItem" title="LITTLE SHERPA" id="i09-1Q-u9m"/>
                     <connections>
                         <segue destination="f3h-cE-zrz" kind="show" identifier="login" id="zOa-7I-SmR"/>
                     </connections>
@@ -281,7 +281,7 @@
                                     <constraint firstAttribute="width" constant="206" id="cg1-ey-hcX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -731,6 +731,7 @@
                     </view>
                     <connections>
                         <outlet property="classNameLabel" destination="Y62-fO-PSd" id="YZz-r5-vm7"/>
+                        <outlet property="confirmActionButton" destination="s7R-5z-CTI" id="a9Y-XA-wOn"/>
                         <outlet property="dateLabel" destination="s7T-E7-NGi" id="kJj-85-5Da"/>
                         <outlet property="locationLabel" destination="Qxf-H7-U5t" id="pca-Le-RXS"/>
                         <outlet property="startEndTimeLabel" destination="HX0-yd-oae" id="kAA-E4-Y01"/>
@@ -951,6 +952,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FrK-3V-K5j"/>
+        <segue reference="zOa-7I-SmR"/>
     </inferredMetricsTieBreakers>
 </document>

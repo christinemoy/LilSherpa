@@ -12,6 +12,8 @@ import Parse
 class ConfirmViewController: UIViewController {
     
     var scheduleObject : PFObject!
+    var firstMatchAttendanceObject : PFObject!
+    var registrationStatus : String!
     var activityName : String = ""
     var activityProvider : String!
     var activityTeacher : String!
@@ -26,9 +28,12 @@ class ConfirmViewController: UIViewController {
     
     @IBOutlet weak var startEndTimeLabel: UILabel!
     
+    @IBOutlet weak var confirmActionButton: UIButton!
+    
     override func viewDidLoad() {
         
         println("actOb is \(scheduleObject)")
+        println("regStatus is \(registrationStatus)")
         
         //ACTIVITY CLASS NAME
         
@@ -102,10 +107,31 @@ class ConfirmViewController: UIViewController {
         dateLabel.text = activityDate
         startEndTimeLabel.text = activityStartAndEndTime
         
+        if self.registrationStatus == "Registered" {
+            confirmActionButton.setTitle("CANCEL", forState: UIControlState.Normal)
+        } else {
+            confirmActionButton.setTitle("REGISTER", forState: UIControlState.Normal)
+        }
+        
     }
         
     @IBAction func pressedConfirmRes(sender: UIButton) {
-        
+        if self.registrationStatus == "Registered" {
+            var objectToUpdate = firstMatchAttendanceObject
+            objectToUpdate["registrationStatus"] = "Cancelled"
+            objectToUpdate.saveInBackgroundWithTarget(nil, selector: nil)
+            println("cancel successful")
+            dismissViewControllerAnimated(true, completion: nil)
+        } else {
+            var user = PFUser.currentUser()
+            var saveData = PFObject(className: "Attendance")
+            saveData["userIdPointer"] = user
+            saveData["scheduleIdPointer"] = scheduleObject
+            saveData["registrationStatus"] = "Registered"
+            saveData.saveInBackgroundWithTarget(nil, selector: nil)
+            println("save successful")
+            dismissViewControllerAnimated(true, completion: nil)
+        }
         
     }
     

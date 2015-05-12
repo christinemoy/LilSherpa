@@ -16,6 +16,8 @@ class ActivityDetailViewController: UIViewController {
     
     var firstMatchAttendanceObject : PFObject!
     
+    var firstMatchAttendanceObjectId : String!
+    
     var registrationStatus = String()
     
     var confirmationPageId = "confirmationpage"
@@ -230,25 +232,11 @@ class ActivityDetailViewController: UIViewController {
 //            }
 //        }
         
-        // add button
-        let button   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-        
-        button.backgroundColor = UIColor(red: (248/255), green: (131/255), blue: (121/255), alpha: 1)
-        button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        button.setTitle("REGISTER", forState: UIControlState.Normal)
-        button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
-
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        let buttonWidth = screenSize.width
-        button.frame = CGRectMake(0, 397, buttonWidth, 50)
-
-        scroller.addSubview(button)
-        
         //get attendance object
         var attendanceObjectQuery = PFQuery(className: "Attendance")
         attendanceObjectQuery.whereKey("scheduleIdPointer", equalTo: scheduleObject)
         attendanceObjectQuery.whereKey("userIdPointer", equalTo: PFUser.currentUser()!)
-    
+        
         attendanceObjectQuery.findObjectsInBackgroundWithBlock {
             (objects: [AnyObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -257,8 +245,36 @@ class ActivityDetailViewController: UIViewController {
                     self.arrayOfAttendanceObjects = unwrappedObjects
                     println(self.arrayOfAttendanceObjects)
                     
-                    self.firstMatchAttendanceObject = self.arrayOfAttendanceObjects[0]                    
+                    if self.arrayOfAttendanceObjects.isEmpty {
+                        // do nothing
+                    } else {
+                        self.firstMatchAttendanceObject = self.arrayOfAttendanceObjects[0]
+                        self.firstMatchAttendanceObjectId = self.firstMatchAttendanceObject.objectId
+                        self.registrationStatus = self.firstMatchAttendanceObject.objectForKey("registrationStatus") as! String
+                    }
+
                 }
+        
+        // add button
+        let button   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        button.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        
+            if self.registrationStatus == "Registered" {
+                button.backgroundColor = UIColor(red: (248/255), green: (131/255), blue: (121/255), alpha: 1)
+                button.setTitle("CANCEL", forState: UIControlState.Normal)
+            } else {
+                button.backgroundColor = UIColor(red: (248/255), green: (131/255), blue: (121/255), alpha: 1)
+                button.setTitle("REGISTER", forState: UIControlState.Normal)
+            }
+
+ 
+
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let buttonWidth = screenSize.width
+        button.frame = CGRectMake(0, 397, buttonWidth, 50)
+
+        scroller.addSubview(button)
 
             } else {
                 // Log details of the failure
@@ -266,8 +282,7 @@ class ActivityDetailViewController: UIViewController {
         }
         
     }
-    
-    
+
     
     func buttonAction(sender:UIButton!) {
 
@@ -276,16 +291,7 @@ class ActivityDetailViewController: UIViewController {
         self.performSegueWithIdentifier(confirmationPageId, sender: sender)
         
         
-        var user = PFUser.currentUser()
-        
-        var saveData = PFObject(className: "Attendance")
-        saveData["userIdPointer"] = user
-        saveData["scheduleIdPointer"] = scheduleObject
-        saveData["registrationStatus"] = "Registered"
-        saveData.saveInBackgroundWithTarget(nil, selector: nil)
-        
-        println(saveData)
-        println(user)
+
         
         
         
@@ -297,6 +303,8 @@ class ActivityDetailViewController: UIViewController {
             if let destination = segue.destinationViewController as? ConfirmViewController {
                 
                 destination.scheduleObject = scheduleObject
+                destination.registrationStatus = registrationStatus
+                destination.firstMatchAttendanceObject = firstMatchAttendanceObject
                 
             }
         }
